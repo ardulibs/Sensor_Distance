@@ -1,4 +1,4 @@
-Robot distance
+Robot Distance
 ============
 Gets the distance to one obstacle.
 
