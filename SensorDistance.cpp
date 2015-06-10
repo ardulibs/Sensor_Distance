@@ -1,12 +1,12 @@
 /*
- * RobotDistance
+ * SensorDistance
  * Version 0.1.0 Jun, 2015
  * Copyright 2015 Diego de los Reyes
  *
  * Gets the distance to one obstacle.
  */
 
-#include "RobotDistance.h"
+#include "SensorDistance.h"
 
    
 /** CONSTRUCTORES **/
@@ -14,7 +14,7 @@
 /**
  * Construct.
  */
-RobotDistance::RobotDistance()
+SensorDistance::SensorDistance()
 {
 }
 
@@ -24,7 +24,7 @@ RobotDistance::RobotDistance()
  * Attach the given pin.
  * @param pin: pin where the ultrasound sensor is connected.
  */
-void RobotDistance::attach(int pin)
+void SensorDistance::attach(int pin)
 {
 	pinSensor = pin;
 }
@@ -32,7 +32,7 @@ void RobotDistance::attach(int pin)
 /**
  * Gets the distance to one obstacle.
  */
-float RobotDistance::getDistance()
+float SensorDistance::getDistance()
 {
 	unsigned long pulse;
 	float distance;

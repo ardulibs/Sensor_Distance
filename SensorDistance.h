@@ -1,13 +1,13 @@
 /*
- * RobotDistance
- * Version 0.1.0 Jun, 2015
+ * SensorDistance
+ * Version 0.2.0 Jun, 2015
  * Copyright 2015 Diego de los Reyes
  *
  * Gets the distance to one obstacle.
  */
 
-#ifndef RobotDistance_h
-#define RobotDistance_h
+#ifndef SensorDistance_h
+#define SensorDistance_h
 #define LIBRARY_VERSION	 0.1
 
 // include core Wiring API and now Arduino
@@ -17,8 +17,8 @@
   #include "WProgram.h"
 #endif
 
-// Class RobotDistance
-class RobotDistance {
+// Class SensorDistance
+class SensorDistance {
  
 	/** Public elements. **/
 	public:
@@ -26,7 +26,7 @@ class RobotDistance {
 		/**
 		 * Construct.
 		 */
-		RobotDistance();
+		SensorDistance();
 
 		/**
 		 * Attach the given pin.

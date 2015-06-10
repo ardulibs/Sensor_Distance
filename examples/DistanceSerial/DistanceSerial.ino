@@ -1,6 +1,6 @@
-#include <RobotDistance.h>
+#include <SensorDistance.h>
 
-RobotDistance sensor;
+SensorDistance sensor;
 
 void setup() {
   Serial.begin(9600);
