@@ -8,7 +8,7 @@ void setup() {
 }
 
 void loop() {
-  int distance = sensor.getDistance();
+  float distance = sensor.getDistance();
   Serial.println(distance);
   delay(500);
 }
