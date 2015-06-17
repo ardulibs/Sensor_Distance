@@ -39,12 +39,30 @@ class SensorDistance {
 		 */
 		float getDistance();
 
+		/**
+		 * Turns on the sensor.
+		 */
+		void turnOn();
+
+		/**
+		 * Turns off the sensor.
+		 */
+		void turnOff();
+
+		/**
+		 * Returns true if the sensor is active and false in other case.
+		 */
+		bool isActive();
+
 	private:
 
 		/** Attributes **/
 
 		//Attached pin.
 		int pinSensor;
+
+		//Active
+		bool active;
 };
 
 #endif

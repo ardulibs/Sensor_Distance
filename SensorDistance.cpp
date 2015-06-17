@@ -1,6 +1,7 @@
 /*
  * SensorDistance
- * Version 0.1.0 Jun, 2015
+ * Version 0.1.0 Jun, 2015 - Created.
+ * Version 0.2.0 Jun, 2015 - Added turn on, turn off and is active.
  * Copyright 2015 Diego de los Reyes
  *
  * Gets the distance to one obstacle.
@@ -27,6 +28,7 @@ SensorDistance::SensorDistance()
 void SensorDistance::attach(int pin)
 {
 	pinSensor = pin;
+	this->turnOn();
 }
 
 /**
@@ -34,17 +36,44 @@ void SensorDistance::attach(int pin)
  */
 float SensorDistance::getDistance()
 {
-	unsigned long pulse;
-	float distance;
+	float distance = -1;
 
-	pinMode(pinSensor, OUTPUT);
-	digitalWrite(pinSensor, HIGH);
-	delayMicroseconds(10);
-	digitalWrite(pinSensor, LOW);
-	pinMode(pinSensor, INPUT);
-	pulse = pulseIn(pinSensor, HIGH);
-	distance = ((float(pulse/1000.0))*34.32)/2;
-	delay(100);
+	if(this->isActive()){
+		unsigned long pulse;
+
+		pinMode(pinSensor, OUTPUT);
+		digitalWrite(pinSensor, HIGH);
+		delayMicroseconds(10);
+		digitalWrite(pinSensor, LOW);
+		pinMode(pinSensor, INPUT);
+		pulse = pulseIn(pinSensor, HIGH);
+		distance = ((float(pulse/1000.0))*34.32)/2;
+		delay(100);
+	}
 
 	return distance;
+}
+
+/**
+ * Turns on the sensor.
+ */
+void SensorDistance::turnOn()
+{
+	this->active = true;
+}
+
+/**
+ * Turns off the sensor.
+ */
+void SensorDistance::turnOff()
+{
+	this->active = false;
+}
+
+/**
+ * Returns true if the sensor is active and false in other case.
+ */
+bool SensorDistance::isActive()
+{
+	return this->active;
 }

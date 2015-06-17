@@ -11,3 +11,6 @@ SensorDistance	KEYWORD1
 #######################################	
 
 getDistance	KEYWORD2
+turnOn	KEYWORD2
+turnOff	KEYWORD2
+isActive	KEYWORD2
