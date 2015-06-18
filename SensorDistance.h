@@ -1,6 +1,8 @@
 /*
  * SensorDistance
- * Version 0.2.0 Jun, 2015
+ * Version 0.1.0 Jun, 2015 - Created.
+ * Version 0.2.0 Jun, 2015 - Added turn on, turn off and is active.
+ * Version 0.2.1 Jun, 2015 - Starts turned off.
  * Copyright 2015 Diego de los Reyes
  *
  * Gets the distance to one obstacle.
