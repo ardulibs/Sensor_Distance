@@ -24,11 +24,15 @@ SensorDistance::SensorDistance()
 
 /**
  * Attach the given pin.
- * @param pin: pin where the ultrasound sensor is connected.
+ * @param pinTrig: pin where the trigger pin is connected.
+ * @param pinEcho: pin where the echo pin is connected.
  */
-void SensorDistance::attach(int pin)
+void SensorDistance::attach(int inputTrig, int inputEcho)
 {
-	pinSensor = pin;
+	pinTrig = inputTrig;
+	pinEcho = inputEcho;
+	pinMode(pinTrig, OUTPUT);
+  	pinMode(pinEcho, INPUT);
 	this->turnOff();
 }
 
@@ -37,18 +41,23 @@ void SensorDistance::attach(int pin)
  */
 float SensorDistance::getDistance()
 {
-	float distance = -1;
+	long distance = -1;
 
 	if(this->isActive()){
-		unsigned long pulse;
+		long duration;
+		digitalWrite(pinTrig, LOW);  // Added this line
+		delayMicroseconds(2); // Added this line
+		digitalWrite(pinTrig, HIGH);
+		//  delayMicroseconds(1000); - Removed this line
+		delayMicroseconds(10); // Added this line
+		digitalWrite(pinTrig, LOW);
+		duration = pulseIn(pinEcho, HIGH);
+		distance = (duration/2) / 29.1;
 
-		pinMode(pinSensor, OUTPUT);
-		digitalWrite(pinSensor, HIGH);
-		delayMicroseconds(10);
-		digitalWrite(pinSensor, LOW);
-		pinMode(pinSensor, INPUT);
-		pulse = pulseIn(pinSensor, HIGH);
-		distance = ((float(pulse/1000.0))*34.32)/2;
+		if (distance >= 200 || distance <= 0){
+			distance = -1;
+		}
+
 		delay(100);
 	}
 

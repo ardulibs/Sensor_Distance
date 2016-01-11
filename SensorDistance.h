@@ -34,7 +34,7 @@ class SensorDistance {
 		 * Attach the given pin.
 		 * @param pin: pin where the ultrasound sensor is connected.
 		 */
-		void attach(int pin);
+		void attach(int pinTrig, int pinEcho);
 	
 		/**
 		 * Gets the distance to one obstacle.
@@ -60,8 +60,11 @@ class SensorDistance {
 
 		/** Attributes **/
 
-		//Attached pin.
-		int pinSensor;
+		//Attached trigger pin.
+		int pinTrig;
+
+		//Attached echo pin.
+		int pinEcho;
 
 		//Active
 		bool active;

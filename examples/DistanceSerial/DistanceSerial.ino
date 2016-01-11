@@ -1,14 +1,16 @@
 #include <SensorDistance.h>
 
 SensorDistance sensor;
+float distance;
 
 void setup() {
   Serial.begin(9600);
-  sensor.attach(A0);
+  sensor.attach(12, 11);
+  sensor.turnOn();
 }
 
 void loop() {
-  float distance = sensor.getDistance();
+  distance = sensor.getDistance();
   Serial.println(distance);
   delay(500);
 }
